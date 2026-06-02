@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Skin Therapeutics Anniversary 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-page: #F3EFEC;
+    --bg-white: #FFFFFF;
+    --bg-pink: #F1E6EB;
+    --bg-warm-gray: #EDEBE9;
+    --bg-map: #EFEBE6;
+    --bg-block: #E3DDD6;
+    --line: #E8E6E4;
+    --line-pink: #D9C2CC;
+    --text-dark: #363431;
+    --text-h2: #333333;
+    --text-body: #444444;
+    --mauve: #8B7384;
+    --mauve-deep: #6B5466;
+    --wine: #631142;
+    --serif: 'Playfair Display', serif;
+    --sans: 'Poppins', sans-serif;
+    --condensed: 'Barlow Condensed', Impact, sans-serif;
+    /* Side padding: 96px when viewport is <= 1440px, expanding to keep content at 1248px wide on larger screens */
+    --side-96: max(96px, calc((100vw - 1248px) / 2));
+    --side-88: max(88px, calc((100vw - 1264px) / 2));
+    --side-64: max(64px, calc((100vw - 1312px) / 2));
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg-page);
+    color: var(--text-dark);
+    font-family: var(--sans);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+  html, body { overflow-x: hidden; }
+  .page { width: 100%; margin: 0 auto; }
+  .section-inner { width: 100%; max-width: 1440px; margin: 0 auto; }
+
+  /* ============ HEADER ============ */
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px var(--side-64);
+    height: 96px;
+    transition: background 0.3s ease-out, box-shadow 0.3s ease-out;
+  }
+  .site-header.scrolled { background: var(--bg-white); box-shadow: 0 1px 0 rgba(0,0,0,0.06); }
+  .site-header .logo-light { display: none; }
+  .site-header:not(.scrolled) .logo-color { display: none; }
+  .site-header:not(.scrolled) .logo-light { display: block; }
+  .site-header:not(.scrolled) .nav a { color: #fff; }
+  .site-header:not(.scrolled) .header-cta {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255,255,255,0.7);
+  }
+  .site-header:not(.scrolled) .header-cta:hover {
+    background: var(--wine);
+    border-color: var(--wine);
+    color: #fff;
+  }
+  .site-header:not(.scrolled) .nav-toggle span { background: #fff; }
+  .logo-frame img { height: 56px; width: auto; }
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+  .nav a {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dark);
+    letter-spacing: 1.45px;
+    position: relative;
+    transition: color 0.3s ease-out;
+  }
+  .nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 300ms ease-out;
+  }
+  .nav a:hover::after { width: 100%; }
+  .header-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 28px;
+    border-radius: 50px;
+    border: 1px solid var(--mauve);
+    background: var(--bg-white);
+    color: var(--text-dark);
+    font-family: var(--sans);
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease-out;
+  }
+  .header-cta:hover {
+    background: var(--wine);
+    color: var(--bg-white);
+    border-color: var(--wine);
+  }
+  .nav-toggle { display: none; }
+
+  /* ============ HERO (Cinematic 5-Cards) ============ */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    min-height: 540px;
+    background: #000;
+    overflow: hidden;
+    color: #fff;
+  }
+  .hero-base {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.2);
+    will-change: transform, opacity;
+  }
+  .hero-vignette {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 50% 56%, rgba(197,255,92,0.10), transparent 22%),
+      radial-gradient(circle at 63% 45%, rgba(210,111,255,0.14), transparent 28%),
+      radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.55) 90%);
+    pointer-events: none;
+  }
+  .hero-intro {
+    position: absolute;
+    left: 0; right: 0;
+    top: 4%;
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    padding: 0 16px;
+  }
+  .hero-intro p {
+    font-family: var(--condensed);
+    font-weight: 600;
+    color: rgba(255,255,255,0.20);
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .mobile-br { display: none; }
+  .hero-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(0.45rem, 1.2vw, 1.2rem);
+    text-align: center;
+    z-index: 20;
+    opacity: 0;
+    padding: 0 4%;
+  }
+  .titleChunk {
+    display: inline-block;
+    font-family: var(--condensed);
+    font-weight: 700;
+    color: #fff;
+    font-size: clamp(2.82rem, 8.1vw, 7.8rem);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    opacity: 0;
+    transform: translateY(70%);
+    filter: blur(1rem);
+    will-change: transform, opacity, filter;
+  }
+  .hero-date-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30%;
+    text-align: center;
+    z-index: 20;
+    opacity: 0;
+    padding: 0 4%;
+  }
+  .hero-date-line p {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-style: italic;
+    color: #fff;
+    font-size: clamp(2rem, 5.5vw, 5rem);
+    line-height: 1;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+  .hero-date-line sup {
+    font-size: 0.45em;
+    font-style: normal;
+    vertical-align: super;
+  }
+  .hero-cards {
+    position: absolute;
+    inset: 0;
+    z-index: 40;
+    pointer-events: none;
+  }
+  .mediaCard {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.10);
+    opacity: 0;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.62);
+    transform: translateY(160px) scale(0.7);
+    filter: blur(1rem);
+    will-change: transform, opacity, filter;
+  }
+  .mediaCard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .mediaCard .tint {
+    position: absolute;
+    inset: 0;
+    mix-blend-mode: screen;
+  }
+  .card-1 { left: 8%; top: 55%; height: 21vh; width: 20rem; max-width: 36vw; box-shadow: 0 24px 64px rgba(0,0,0,0.62), 0 0 32px rgba(219,45,255,0.20); }
+  .card-1 .tint { background: rgba(217,70,239,0.25); }
+  .card-2 { left: 29%; top: 50%; height: 14vh; width: 17rem; max-width: 31vw; box-shadow: 0 24px 64px rgba(0,0,0,0.55); }
+  .card-2 .tint { background: rgba(251,146,60,0.20); }
+  .card-3 { left: 50%; top: 59%; height: 22vh; width: 30rem; max-width: 45vw; box-shadow: 0 24px 64px rgba(0,0,0,0.62), 0 0 40px rgba(197,255,90,0.18); }
+  .card-3 .tint { background: rgba(190,242,100,0.20); }
+  .card-4 { right: 23%; top: 48%; height: 16vh; width: 17rem; max-width: 30vw; box-shadow: 0 24px 64px rgba(0,0,0,0.55); }
+  .card-4 .tint { background: rgba(253,224,71,0.30); }
+  .card-5 { right: 8%; top: 51%; height: 23vh; width: 21rem; max-width: 37vw; box-shadow: 0 24px 64px rgba(0,0,0,0.62), 0 0 32px rgba(44,193,255,0.18); }
+  .card-5 .tint { background: rgba(34,211,238,0.20); }
+
+  .hero-cta-wrap {
+    position: absolute;
+    left: 50%;
+    bottom: 3%;
+    transform: translateX(-50%) translateY(30px);
+    z-index: 80;
+    opacity: 0;
+    pointer-events: auto;
+  }
+  .hero-cta-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 30px;
+    border-radius: 50px;
+    font-family: var(--sans);
+    font-size: 15px;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn-dark { background: var(--text-dark); color: var(--bg-white); }
+  .btn-dark:hover { background: var(--mauve); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-dark);
+    border: 1px solid var(--text-dark);
+    font-weight: 300;
+  }
+  .btn-ghost:hover { background: var(--text-dark); color: var(--bg-white); }
+  .hero-cta-primary {
+    display: inline-block;
+    color: #fff;
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 19.2px;
+    line-height: 1;
+    padding: 14.8px 27.6px;
+    background: rgba(0,0,0,0.37);
+    border: 1px solid #FFFFFF;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s ease-out, border-color 0.3s ease-out, color 0.3s ease-out;
+    text-decoration: none;
+  }
+  .hero-cta-primary:hover {
+    background: var(--mauve);
+    border-color: var(--mauve);
+  }
+  .hero-cta-secondary {
+    display: inline-block;
+    color: #fff;
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 19.2px;
+    line-height: 1;
+    padding: 14.8px 27.6px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s ease-out, border-color 0.3s ease-out;
+    text-decoration: none;
+  }
+  .hero-cta-secondary:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: #fff;
+  }
+  .hero-flash {
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    opacity: 0;
+    z-index: 70;
+    pointer-events: none;
+  }
+
+  /* ============ QUICK FACTS ============ */
+  .facts {
+    display: grid;
+    grid-template-columns: 1fr 564px;
+    gap: 64px;
+    padding: 56px var(--side-96);
+    background: var(--bg-pink);
+  }
+  .facts-l { display: flex; flex-direction: column; gap: 28px; max-width: 620px; }
+  .facts-eb {
+    color: var(--mauve-deep);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+  }
+  .facts-h {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--text-dark);
+  }
+  .facts-h em {
+    font-style: italic;
+    color: var(--mauve);
+    display: block;
+  }
+  .facts-grid { display: flex; flex-direction: column; }
+  .facts-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 32px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line-pink);
+  }
+  .facts-k {
+    color: var(--mauve-deep);
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+  }
+  .facts-v {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text-dark);
+  }
+  .chip-row { display: flex; gap: 10px; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  .chip-mauve { background: var(--mauve); color: var(--bg-white); }
+  .chip-mauve .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--bg-white); }
+  .chip-white {
+    background: var(--bg-white);
+    color: var(--mauve-deep);
+    border: 1px solid var(--mauve);
+    font-weight: 300;
+  }
+
+  .facts-form {
+    background: var(--mauve);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 24px;
+  }
+  .form-eb {
+    color: rgba(255,255,255,0.82);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+  }
+  .form-h {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--bg-white);
+  }
+  .field { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .field-row { display: flex; gap: 12px; }
+  .field-lbl {
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+  }
+  .field-input {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: var(--bg-white);
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 300;
+    transition: border-color 0.3s ease-out, background 0.3s ease-out;
+  }
+  .field-input::placeholder { color: rgba(255,255,255,0.7); }
+  .field-input:focus { outline: none; border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.14); }
+  .interest-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .interest-chip {
+    background: rgba(255,255,255,0.09);
+    border: 1px solid rgba(255,255,255,0.19);
+    border-radius: 50px;
+    padding: 8px 14px;
+    color: var(--bg-white);
+    font-size: 12px;
+    font-weight: 300;
+    transition: all 0.3s ease-out;
+  }
+  .interest-chip:hover, .interest-chip.active { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); }
+  .form-submit {
+    background: var(--bg-white);
+    color: var(--mauve-deep);
+    border-radius: 50px;
+    padding: 16px 28px;
+    font-size: 15px;
+    transition: all 0.3s ease-out;
+    text-align: center;
+  }
+  .form-submit:hover { background: var(--text-dark); color: var(--bg-white); }
+
+  /* ============ HAPPENING ============ */
+  .happening {
+    background: var(--bg-white);
+    padding: 88px var(--side-96);
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .happening-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 64px;
+  }
+  .happening-head .left { flex: 1; max-width: 720px; display: flex; flex-direction: column; gap: 16px; }
+  .happening-head .right { width: 360px; }
+  .happening-eb { color: var(--mauve); font-size: 13px; font-weight: 300; letter-spacing: 2.4px; text-transform: uppercase; }
+  .happening-h {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 50px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--text-h2);
+  }
+  .happening-sub {
+    color: var(--text-body);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .h-card { display: flex; flex-direction: column; gap: 18px; }
+  .h-card-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.6s ease-out;
+  }
+  .h-card-img.team-photo { object-position: center 30%; }
+  .h-card:hover .h-card-img { transform: scale(1.03); }
+  .h-card .tag {
+    color: var(--mauve);
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .h-card { cursor: pointer; }
+  .h-card .title {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--text-dark);
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 300ms ease-out;
+    align-self: flex-start;
+  }
+  .h-card:hover .title { background-size: 100% 1px; }
+  .h-card .desc {
+    color: var(--text-body);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.55;
+  }
+
+  /* ============ SPECIALS / PRICE LIST ============ */
+  .specials {
+    background: var(--bg-warm-gray);
+    padding: 96px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .specials-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    padding: 0 var(--side-88);
+  }
+  .specials-head .left { flex: 1; max-width: 740px; }
+  .specials-head .right { width: 340px; }
+  .specials-eb { color: var(--mauve); font-size: 13px; font-weight: 300; letter-spacing: 2.4px; text-transform: uppercase; }
+  .specials-h {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1;
+    color: var(--text-dark);
+    margin-top: 14px;
+  }
+  .specials-h em { font-style: italic; color: var(--mauve); display: block; }
+  .specials-sub {
+    color: var(--text-body);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+  .price-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--side-88);
+  }
+  .price-row {
+    display: grid;
+    grid-template-columns: 60px 80px 340px 1fr;
+    gap: 32px;
+    align-items: center;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    transition: background 0.3s ease-out;
+    cursor: pointer;
+  }
+  .price-row:hover { background: rgba(139, 115, 132, 0.04); }
+  .price-num {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--mauve);
+  }
+  .price-th {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    display: block;
+  }
+  .price-mid { display: flex; flex-direction: column; gap: 4px; }
+  .price-cat { color: var(--mauve); font-size: 11px; font-weight: 300; letter-spacing: 1.8px; text-transform: uppercase; }
+  .price-name {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--text-dark);
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 300ms ease-out;
+    display: inline-block;
+    align-self: flex-start;
+  }
+  .price-row:hover .price-name { background-size: 100% 1px; }
+  .price-row:hover .price-num { color: var(--wine); transition: color 300ms ease-out; }
+  .price-cells { display: flex; flex-direction: column; gap: 4px; }
+  .price-cell {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    padding: 6px 0;
+    gap: 24px;
+  }
+  .price-cell .p {
+    color: var(--text-body);
+    font-size: 14px;
+    font-weight: 300;
+    text-align: left;
+  }
+  .price-cell .sv {
+    color: var(--mauve);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+  }
+  .price-cell .amt {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--text-dark);
+    text-align: center;
+  }
+  .price-cell .pct {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    padding: 4px 10px;
+    border-radius: 50px;
+    background: #2F7D4F;
+    color: #FFFFFF;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    line-height: 1;
+  }
+  .specials-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 40px 88px 0;
+  }
+  .specials-cta-eb { color: var(--mauve); font-size: 12px; font-weight: 300; letter-spacing: 2.4px; text-transform: uppercase; }
+  .specials-cta-h {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.15;
+    text-align: center;
+    color: var(--text-dark);
+    max-width: 640px;
+  }
+  .specials-cta-row { display: flex; gap: 12px; }
+  .btn-mauve {
+    background: var(--mauve);
+    color: var(--bg-white);
+    padding: 18px 36px;
+    font-size: 16px;
+    letter-spacing: 0.4px;
+  }
+  .btn-mauve:hover { background: var(--wine); }
+  .btn-ghost-lg {
+    padding: 18px 36px;
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  /* ============ SCHEDULE ============ */
+  .schedule {
+    background: var(--bg-white);
+    padding: 96px var(--side-96);
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .schedule-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+  }
+  .schedule-head .left { flex: 1; max-width: 720px; display: flex; flex-direction: column; gap: 12px; }
+  .schedule-head .right { width: 360px; color: var(--text-body); font-size: 15px; font-weight: 300; line-height: 1.65; }
+  .schedule-eb { color: var(--mauve); font-size: 13px; font-weight: 300; letter-spacing: 2.4px; text-transform: uppercase; }
+  .schedule-h {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--text-h2);
+  }
+  .stepper {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding-right: 12px;
+  }
+  .step-top { display: flex; align-items: center; }
+  .step-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--mauve);
+    flex-shrink: 0;
+    transition: transform 0.3s ease-out;
+  }
+  .step:hover .step-dot { transform: scale(1.3); }
+  .step-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+  .step:last-child .step-line { background: transparent; }
+  .step-t {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--mauve);
+  }
+  .step-e {
+    color: var(--text-dark);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ============ MAP ============ */
+  .map-section {
+    position: relative;
+    height: clamp(440px, 60vh, 640px);
+    background: var(--bg-map);
+    overflow: hidden;
+  }
+  .map-iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: saturate(0.85) contrast(0.95);
+  }
+  .map-card {
+    position: absolute;
+    left: var(--side-96);
+    top: 88px;
+    right: auto;
+    width: 460px;
+    max-width: calc(100vw - 48px);
+    background: var(--bg-white);
+    padding: 40px 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 3;
+    box-shadow: 0 24px 64px rgba(54, 52, 49, 0.18);
+    border-radius: 12px;
+  }
+  .map-eb { color: var(--mauve); font-size: 11px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
+  .map-h {
+    font-family: var(--serif);
+    font-size: clamp(26px, 2.6vw, 38px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--text-dark);
+  }
+  .map-ad { display: flex; flex-direction: column; gap: 4px; color: var(--text-body); font-size: 16px; font-weight: 300; line-height: 1.6; }
+  .map-dir {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 14px 26px;
+    border-radius: 50px;
+    background: var(--text-dark);
+    color: var(--bg-white);
+    font-size: 14px;
+    transition: all 0.3s ease-out;
+  }
+  .map-dir:hover { background: var(--mauve); }
+
+  /* ============ FOOTER ============ */
+  .site-footer {
+    background: var(--text-dark);
+    color: var(--bg-white);
+    padding: 72px var(--side-96) 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 360px 280px 220px 220px;
+    gap: 80px;
+    justify-content: space-between;
+  }
+  .footer-left { display: flex; flex-direction: column; gap: 28px; }
+  .footer-logo {
+    width: 220px;
+    height: 64px;
+    object-fit: contain;
+    object-position: left;
+    filter: brightness(0) invert(1);
+    transition: filter 0.4s ease-out;
+  }
+  .footer-logo:hover {
+    filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255,255,255,0.85)) drop-shadow(0 0 24px rgba(139,115,132,0.6));
+  }
+  .footer-tag {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--bg-page);
+  }
+  .footer-col { display: flex; flex-direction: column; gap: 14px; }
+  .footer-col-label { color: #B1AEAD; font-size: 12px; font-weight: 500; letter-spacing: 1.45px; text-transform: uppercase; }
+  .footer-col-val { color: var(--bg-white); font-size: 15px; font-weight: 300; line-height: 1.6; }
+  .footer-link {
+    display: inline-block;
+    position: relative;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 300ms ease-out;
+    width: fit-content;
+  }
+  .footer-link:hover { background-size: 100% 1px; }
+  .footer-divider { width: 100%; height: 1px; background: rgba(255,255,255,0.13); }
+  .footer-bot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy { color: #B1AEAD; font-size: 13px; font-weight: 300; }
+  .footer-social { display: flex; gap: 14px; }
+  .social-link {
+    width: 36px; height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.28s ease-in-out;
+  }
+  .social-link:hover { opacity: 0.85; }
+  .social-link svg { width: 24px; height: 24px; fill: var(--bg-white); }
+
+  /* ============ SCROLL REVEALS (ANU Motion) ============ */
+  .animate-up { opacity: 0; transform: translateY(40px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
+  .animate-down { opacity: 0; transform: translateY(-40px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
+  .animate-left { opacity: 0; transform: translateX(-20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  .animate-right { opacity: 0; transform: translateX(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  .in-view { opacity: 1; transform: translate(0,0); }
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
+  .delay-5 { transition-delay: 0.5s; }
+  .delay-8 { transition-delay: 0.8s; }
+
+  /* ============ STICKY BOOK ============ */
+  .sticky-book {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    background: var(--text-dark);
+    color: var(--bg-white);
+    padding: 14px 24px;
+    text-align: center;
+    z-index: 90;
+    font-size: 13px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    transform: translateY(100%);
+    transition: transform 0.5s ease-out, background 0.3s ease-out;
+    cursor: pointer;
+  }
+  .sticky-book.show { transform: translateY(0); }
+  .sticky-book:hover { background: var(--mauve); }
+
+  /* ============ TABLET (≤1200px) ============ */
+  @media (max-width: 1200px) {
+    .facts { grid-template-columns: 1fr 480px; gap: 40px; padding: 48px var(--side-96); }
+    .facts-form { padding: 32px; }
+    .happening { padding: 72px var(--side-96); gap: 40px; }
+    .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+    .h-card-img { height: 32vh; min-height: 240px; max-height: 320px; }
+    .specials { padding: 72px 0; gap: 40px; }
+    .price-row {
+      grid-template-columns: 48px 64px minmax(220px, 1fr) 1.4fr;
+      gap: 20px;
+      padding: 22px 0;
+    }
+    .price-th { width: 64px; height: 64px; }
+    .price-name { font-size: 22px; }
+    .price-cell { gap: 16px; }
+    .price-cell .amt { font-size: 22px; }
+    .schedule { padding: 72px var(--side-96); gap: 40px; }
+    .stepper { grid-template-columns: repeat(6, 1fr); gap: 12px; }
+    .step-t { font-size: 26px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+
+  /* ============ TABLET PORTRAIT (≤1024px) ============ */
+  @media (max-width: 1024px) {
+    .facts { grid-template-columns: 1fr; gap: 40px; }
+    .stepper { grid-template-columns: repeat(3, 1fr); row-gap: 32px; }
+    .step:nth-child(3) .step-line { display: none; }
+  }
+
+  /* ============ MOBILE (≤960px) ============ */
+  @media (max-width: 960px) {
+    .site-header { padding: 16px 20px; height: 72px; }
+    .logo-frame img { height: 40px; }
+    .nav { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--bg-white); flex-direction: column; gap: 0; padding: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+    .nav.open { display: flex; }
+    .nav a, .site-header:not(.scrolled) .nav a { padding: 12px 0; width: 100%; border-bottom: 1px solid var(--line); color: var(--text-dark); }
+    .nav a:last-child { border-bottom: none; }
+    .header-cta { padding: 10px 20px; font-size: 12px; }
+    .nav-toggle { display: inline-flex; flex-direction: column; gap: 4px; padding: 8px; }
+    .nav-toggle span { width: 22px; height: 1.5px; background: var(--text-dark); }
+
+    .hero { min-height: 480px; height: 100vh; height: 100svh; }
+    .mobile-br { display: inline; }
+    .hero-intro { top: 8%; }
+    .hero-intro p { font-size: clamp(2rem, 9vw, 4rem); line-height: 1.05; }
+    .hero-title { top: 15%; gap: 0.3rem 0.5rem; padding: 0 4%; flex-wrap: wrap; }
+    .titleChunk { font-size: clamp(3.6rem, 13.8vw, 7.5rem); }
+    .hero-date-line { top: 35%; }
+    .hero-date-line p { font-size: clamp(4.5rem, 15vw, 7.5rem); line-height: 0.95; }
+    .card-1 { left: 4%; top: 52%; width: 9.5rem; max-width: 42vw; height: 16vh; }
+    .card-2 { left: 28%; top: 49%; width: 8rem; max-width: 32vw; height: 12vh; }
+    .card-3 { top: 60%; width: 14rem; max-width: 56vw; height: 18vh; }
+    .card-4 { right: 28%; top: 49%; width: 8rem; max-width: 32vw; height: 13vh; }
+    .card-5 { right: 4%; top: 52%; width: 9.5rem; max-width: 42vw; height: 17vh; }
+    .hero-cta-wrap { bottom: 4%; width: calc(100% - 32px); }
+    .hero-cta-row { flex-direction: column; width: 100%; gap: 8px; }
+    .hero-cta-primary, .hero-cta-secondary { width: 100%; text-align: center; font-size: 15px; padding: 14px 24px; }
+
+    .facts { grid-template-columns: 1fr; gap: 28px; padding: 8% 5%; }
+    .facts-h { font-size: clamp(24px, 6vw, 32px); }
+    .facts-row { grid-template-columns: 1fr; gap: 4px; padding: 14px 0; }
+    .facts-form { padding: 24px; }
+    .field-row { flex-direction: column; gap: 16px; }
+
+    .happening { padding: 8% 5%; gap: 28px; }
+    .happening-head { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .happening-h { font-size: clamp(26px, 6.5vw, 36px); }
+    .happening-head .right { width: 100%; }
+    .highlights-grid { grid-template-columns: 1fr; gap: 32px; }
+    .h-card-img { height: 56vw; max-height: 320px; min-height: 200px; }
+
+    .specials { padding: 8% 0; gap: 28px; }
+    .specials-head { padding: 0 5%; flex-direction: column; align-items: flex-start; }
+    .specials-h { font-size: clamp(28px, 8vw, 44px); }
+    .specials-head .right { width: 100%; }
+    .price-list { padding: 0 5%; }
+    .price-row { grid-template-columns: 40px 56px 1fr; row-gap: 12px; gap: 14px; padding: 18px 0; }
+    .price-th { width: 56px; height: 56px; }
+    .price-num { font-size: 18px; }
+    .price-name { font-size: clamp(18px, 5vw, 22px); }
+    .price-cells { grid-column: 1 / -1; }
+    .price-cell {
+      grid-template-columns: 1fr auto auto;
+      gap: 10px;
+      padding: 8px 0;
+    }
+    .price-cell .p { font-size: 13px; }
+    .price-cell .sv { display: none; }
+    .price-cell .amt { font-size: clamp(18px, 5vw, 22px); text-align: right; }
+    .price-cell .pct { min-width: 48px; font-size: 11px; padding: 3px 8px; }
+    .specials-cta { padding: 20px 5% 0; }
+    .specials-cta-h { font-size: 24px; }
+    .specials-cta-row { flex-direction: column; width: 100%; }
+    .specials-cta-row .btn { width: 100%; }
+
+    .schedule { padding: 8% 5%; gap: 28px; }
+    .schedule-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .schedule-h { font-size: clamp(26px, 6.5vw, 36px); }
+    .schedule-head .right { width: 100%; }
+    .stepper { grid-template-columns: 1fr; gap: 20px; }
+    .step { flex-direction: row; align-items: center; gap: 20px; padding: 0; display: flex; }
+    .step-top { width: 14px; flex-shrink: 0; }
+    .step-line { display: none; }
+    .step-t { font-size: 28px; width: 84px; flex-shrink: 0; }
+    .step-e { flex: 1; }
+
+    .map-section { height: auto; min-height: 0; display: flex; flex-direction: column; align-items: center; padding: 24px 5%; gap: 24px; background: var(--bg-map); }
+    .map-iframe { position: relative; width: 100%; max-width: 560px; height: 50vw; min-height: 240px; max-height: 360px; border-radius: 12px; }
+    .map-card {
+      position: static;
+      left: auto;
+      top: auto;
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 28px 28px;
+      border-radius: 12px;
+      box-shadow: 0 16px 40px rgba(54, 52, 49, 0.12);
+      text-align: center;
+      align-items: center;
+    }
+    .map-card .map-ad { align-items: center; text-align: center; }
+    .map-h { font-size: clamp(22px, 6vw, 32px); }
+
+    .site-footer { padding: 8% 5%; gap: 28px; }
+    .footer-top { grid-template-columns: 1fr; gap: 28px; }
+    .footer-tag { font-size: 18px; }
+    .footer-logo { width: 180px; height: 56px; }
+    .footer-bot { flex-direction: column; gap: 16px; align-items: flex-start; }
+
+    .sticky-book { font-size: 11px; padding: 12px 20px; letter-spacing: 1.2px; }
+  }
+
+  /* ============ SMALL MOBILE (≤480px) ============ */
+  @media (max-width: 480px) {
+    .site-header { padding: 12px 16px; height: 64px; }
+    .nav { top: 64px; }
+    .logo-frame img { height: 36px; }
+    .header-cta { padding: 8px 16px; font-size: 11px; letter-spacing: 1px; }
+
+    .hero-cta-primary, .hero-cta-secondary { font-size: 14px; padding: 12px 18px; }
+
+    .card-1 { left: 3%; top: 53%; width: 38vw; height: 14vh; }
+    .card-2 { left: 27%; top: 51%; width: 30vw; height: 11vh; }
+    .card-3 { top: 61%; width: 52vw; height: 16vh; }
+    .card-4 { right: 27%; top: 51%; width: 30vw; height: 12vh; }
+    .card-5 { right: 3%; top: 53%; width: 38vw; height: 15vh; }
+
+    .step-t { font-size: 24px; }
+    .step-e { font-size: 13px; }
+
+    .price-row { grid-template-columns: 32px 48px 1fr; gap: 10px; padding: 14px 0; }
+    .price-th { width: 48px; height: 48px; }
+
+    .float-card { padding: 20px; }
+    .float-t { font-size: 20px; }
+
+    .chip { font-size: 11px; padding: 6px 12px; }
+
+    .sticky-book { font-size: 10px; padding: 10px 16px; }
+  }
+
+  /* ============ TALL VIEWPORTS (avoid hero cards crowding bottom CTA) ============ */
+  @media (min-aspect-ratio: 1/1) and (max-height: 720px) {
+    .hero-cta-wrap { bottom: 4%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="site-header" id="header">
+    <a href="#" class="logo-frame" aria-label="Skin Therapeutics">
+      <img class="logo-color" src="images/Logo color.png" alt="Skin Therapeutics" />
+      <img class="logo-light" src="images/Logo transparent.png" alt="Skin Therapeutics" />
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#event">EVENT</a>
+      <a href="#specials">SPECIALS</a>
+      <a href="#agenda">AGENDA</a>
+      <a href="#location">LOCATION</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="#rsvp" class="header-cta">RSVP</a>
+  </header>
+
+  <!-- HERO (Cinematic 5-card intro) -->
+  <section class="hero" id="event" aria-label="Skin Therapeutics anniversary intro">
+    <img id="heroBase" class="hero-base" src="images/wall-logo.jpg" alt="" aria-hidden="true">
+    <div class="hero-vignette" aria-hidden="true"></div>
+
+    <div class="hero-intro" id="heroIntro">
+      <p>Skin Therapeutics<br class="mobile-br"> celebrates</p>
+    </div>
+
+    <div class="hero-title" id="heroTitle">
+      <span class="titleChunk">5th</span>
+      <span class="titleChunk">Year</span>
+      <span class="titleChunk">Anniversary!</span>
+    </div>
+
+    <div class="hero-date-line" id="heroDateLine">
+      <p>June 11<sup>th</sup></p>
+    </div>
+
+    <div class="hero-cards" aria-label="Anniversary moments">
+      <figure class="mediaCard card-1">
+        <img src="images/toast.jpg" alt="Anniversary toast">
+        <div class="tint"></div>
+      </figure>
+      <figure class="mediaCard card-2">
+        <img src="images/Sculptra-at-ST-scaled.webp" alt="Sculptra treatment">
+        <div class="tint"></div>
+      </figure>
+      <figure class="mediaCard card-3">
+        <img src="images/team2.jpg" alt="The Skin Therapeutics team">
+        <div class="tint"></div>
+      </figure>
+      <figure class="mediaCard card-4">
+        <img src="images/microneedling1.webp" alt="Microneedling treatment">
+        <div class="tint"></div>
+      </figure>
+      <figure class="mediaCard card-5">
+        <img src="images/NMP_5104.jpg" alt="Event moment">
+        <div class="tint"></div>
+      </figure>
+    </div>
+
+    <div class="hero-cta-wrap" id="heroCtaWrap">
+      <div class="hero-cta-row">
+        <a href="#rsvp" class="hero-cta-primary">RSVP</a>
+        <a href="#specials" class="hero-cta-secondary">See The Specials</a>
+      </div>
+    </div>
+
+    <div class="hero-flash" id="heroFlash" aria-hidden="true"></div>
+  </section>
+
+  <!-- QUICK FACTS -->
+  <section class="facts" id="rsvp">
+    <div class="facts-l">
+      <div class="facts-eb animate-up">QUICK FACTS</div>
+      <h2 class="facts-h animate-up delay-1">Everything you need to know <em>before the door opens.</em></h2>
+      <div class="facts-grid">
+        <div class="facts-row animate-up delay-2">
+          <div class="facts-k">THE DATE</div>
+          <div class="facts-v">Thursday, June 11, 2026, 4 to 7 PM</div>
+        </div>
+        <div class="facts-row animate-up delay-2">
+          <div class="facts-k">WHERE</div>
+          <div class="facts-v">4801 Dorsey Hall Dr #204, Ellicott City</div>
+        </div>
+        <div class="facts-row animate-up delay-3">
+          <div class="facts-k">BRING A FRIEND</div>
+          <div class="facts-v">Plus-ones welcome with RSVP</div>
+        </div>
+        <div class="facts-row animate-up delay-3">
+          <div class="facts-k">THE ASTERISK</div>
+          <div class="facts-v">Packages must start by Aug 1 &middot; One per service</div>
+        </div>
+      </div>
+      <div class="chip-row animate-up delay-4">
+        <span class="chip chip-mauve"><span class="dot"></span>LIMITED SEATING</span>
+        <span class="chip chip-white">RSVP required</span>
+      </div>
+    </div>
+    <form class="facts-form animate-left delay-2" onsubmit="event.preventDefault(); openSuccess();">
+      <div class="form-eb">RESERVE A SEAT</div>
+      <h3 class="form-h">Save your spot, limited attendance.</h3>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-lbl">FIRST NAME</label>
+          <input class="field-input" type="text" placeholder="Jordan" required />
+        </div>
+        <div class="field">
+          <label class="field-lbl">LAST NAME</label>
+          <input class="field-input" type="text" placeholder="Ellington" required />
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-lbl">EMAIL</label>
+        <input class="field-input" type="email" placeholder="jordan@example.com" required />
+      </div>
+      <div class="field">
+        <label class="field-lbl">PHONE</label>
+        <input class="field-input" type="tel" placeholder="(410) 555-0119" />
+      </div>
+      <button type="submit" class="form-submit">Send my RSVP</button>
+    </form>
+  </section>
+
+  <!-- HAPPENING -->
+  <section class="happening">
+    <div class="happening-head">
+      <div class="left">
+        <div class="happening-eb animate-up">WHAT'S HAPPENING</div>
+        <h2 class="happening-h animate-up delay-1">An open house for the people who made this place home.</h2>
+      </div>
+    </div>
+    <div class="highlights-grid">
+      <article class="h-card animate-up">
+        <img class="h-card-img" src="images/buffet2.jpg" alt="Bites and bubbles" />
+        <div class="tag">TASTE</div>
+        <h3 class="title">Bites & bubbles</h3>
+        <p class="desc">A grazing table built around what you actually want to eat after work. Sparkling and zero-proof both pour all night.</p>
+      </article>
+      <article class="h-card animate-up delay-1">
+        <img class="h-card-img team-photo" src="images/team3.jpg" alt="The team in full" />
+        <div class="tag">MEET</div>
+        <h3 class="title">The team, in full</h3>
+        <p class="desc">Every injector, aesthetician and front-of-house, together for one evening only. Bring your questions.</p>
+      </article>
+      <article class="h-card animate-up delay-2">
+        <img class="h-card-img" src="images/chair2.jpg" alt="Walk the suite" />
+        <div class="tag">TOUR</div>
+        <h3 class="title">Walk the suite</h3>
+        <p class="desc">See where Sculptra, LaseMD and HydraFacial actually happen. Sit in the chair, no commitment.</p>
+      </article>
+      <article class="h-card animate-up delay-3">
+        <img class="h-card-img" src="images/lobby2.jpg" alt="Surprise giveaways" />
+        <div class="tag">WIN</div>
+        <h3 class="title">Surprise giveaways</h3>
+        <p class="desc">Retail bundles, treatment credits, and a few things we're not announcing in advance. Revealed at the door.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- SPECIALS -->
+  <section class="specials" id="specials">
+    <div class="specials-head">
+      <div class="left">
+        <div class="specials-eb animate-up">THE EVENING PRICE LIST</div>
+        <h2 class="specials-h animate-up delay-1">These prices live<em>for one evening only.</em></h2>
+      </div>
+    </div>
+    <div class="price-list">
+      <!-- 01 Sculptra -->
+      <div class="price-row animate-up">
+        <div class="price-num">01</div>
+        <img class="price-th" src="images/Sculptra-at-ST-scaled.webp" alt="Sculptra" />
+        <div class="price-mid"><div class="price-cat">BIOSTIMULATOR</div><div class="price-name">Sculptra</div></div>
+        <div class="price-cells">
+          <div class="price-cell"><span class="p">Package of 3 treatments</span><span class="sv">save $650</span><span class="amt">$3,600</span><span class="pct">-15%</span></div>
+        </div>
+      </div>
+      <!-- 02 Botox / Dysport -->
+      <div class="price-row animate-up">
+        <div class="price-num">02</div>
+        <img class="price-th" src="images/injectables.webp" alt="Botox" />
+        <div class="price-mid"><div class="price-cat">NEUROTOXIN</div><div class="price-name">Botox / Dysport</div></div>
+        <div class="price-cells">
+          <div class="price-cell"><span class="p">50 units</span><span class="sv">save $150</span><span class="amt">$575</span><span class="pct">-21%</span></div>
+        </div>
+      </div>
+      <!-- 03 Dermal Filler -->
+      <div class="price-row animate-up">
+        <div class="price-num">03</div>
+        <img class="price-th" src="images/dermal-fillers.jpg" alt="Dermal Filler" />
+        <div class="price-mid"><div class="price-cat">FILLER</div><div class="price-name">Dermal Filler</div></div>
+        <div class="price-cells">
+          <div class="price-cell"><span class="p">1 syringe</span><span class="sv">save $105</span><span class="amt">$695</span><span class="pct">-13%</span></div>
+          <div class="price-cell"><span class="p">2 syringes</span><span class="sv">save $225</span><span class="amt">$1,375</span><span class="pct">-14%</span></div>
+          <div class="price-cell"><span class="p">3 syringes</span><span class="sv">save $474</span><span class="amt">$1,926</span><span class="pct">-20%</span></div>
+        </div>
+      </div>
+      <!-- 04 RF Microneedling -->
+      <div class="price-row animate-up">
+        <div class="price-num">04</div>
+        <img class="price-th" src="images/microneedling1.webp" alt="RF Microneedling" />
+        <div class="price-mid"><div class="price-cat">RF MICRONEEDLING</div><div class="price-name">RF Microneedling</div></div>
+        <div class="price-cells">
+          <div class="price-cell"><span class="p">Package of 3</span><span class="sv">save $900</span><span class="amt">$2,400</span><span class="pct">-27%</span></div>
+        </div>
+      </div>
+      <!-- 05 LaseMD Ultra -->
+      <div class="price-row animate-up">
+        <div class="price-num">05</div>
+        <img class="price-th" src="images/laser.webp" alt="LaseMD Ultra" />
+        <div class="price-mid"><div class="price-cat">LASER</div><div class="price-name">LaseMD Ultra</div></div>
+        <div class="price-cells">
+          <div class="price-cell"><span class="p">Package of 3 + INVO post-care</span><span class="sv">save $900</span><span class="amt">$2,100</span><span class="pct">-30%</span></div>
+        </div>
+      </div>
+      <!-- 06 SkinPen Microneedling -->
+      <div class="price-row animate-up">
+        <div class="price-num">06</div>
+        <img class="price-th" src="images/SkinPen-Microneedling-at-ST-scaled.webp" alt="SkinPen" />
+        <div class="price-mid"><div class="price-cat">MICRONEEDLING</div><div class="price-name">SkinPen Microneedling</div></div>
+        <div class="price-cells">
+          <div class="price-cell"><span class="p">Buy 2, get 1 free (3 total)</span><span class="sv">save $500</span><span class="amt">$1,000</span><span class="pct">-33%</span></div>
+        </div>
+      </div>
+      <!-- 07 HydraFacial Signature -->
+      <div class="price-row animate-up">
+        <div class="price-num">07</div>
+        <img class="price-th" src="images/hydrafacial1.webp" alt="HydraFacial Signature" />
+        <div class="price-mid"><div class="price-cat">HYDRAFACIAL</div><div class="price-name">HydraFacial Signature</div></div>
+        <div class="price-cells">
+          <div class="price-cell"><span class="p">× 4 sessions</span><span class="sv">save $150</span><span class="amt">$1,050</span><span class="pct">-12%</span></div>
+        </div>
+      </div>
+      <!-- 08 HydraFacial Advanced -->
+      <div class="price-row animate-up">
+        <div class="price-num">08</div>
+        <img class="price-th" src="images/hydrafacial2.webp" alt="HydraFacial Advanced" />
+        <div class="price-mid"><div class="price-cat">HYDRAFACIAL</div><div class="price-name">HydraFacial Advanced</div></div>
+        <div class="price-cells">
+          <div class="price-cell"><span class="p">× 4 sessions</span><span class="sv">save $160</span><span class="amt">$1,240</span><span class="pct">-11%</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="specials-cta">
+      <div class="specials-cta-row animate-up delay-2">
+        <a href="#rsvp" class="btn btn-mauve">RSVP Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section class="schedule" id="agenda">
+    <div class="schedule-head">
+      <div class="left">
+        <div class="schedule-eb animate-up">AGENDA</div>
+        <h2 class="schedule-h animate-up delay-1">From 4 to 7. Walk in any time.</h2>
+      </div>
+    </div>
+    <div class="stepper">
+      <div class="step animate-up"><div class="step-top"><span class="step-dot"></span><span class="step-line"></span></div><div class="step-t">4:00</div><div class="step-e">Doors open</div></div>
+      <div class="step animate-up delay-1"><div class="step-top"><span class="step-dot"></span><span class="step-line"></span></div><div class="step-t">4:30</div><div class="step-e">Treatment demos</div></div>
+      <div class="step animate-up delay-2"><div class="step-top"><span class="step-dot"></span><span class="step-line"></span></div><div class="step-t">5:15</div><div class="step-e">1:1 consults</div></div>
+      <div class="step animate-up delay-3"><div class="step-top"><span class="step-dot"></span><span class="step-line"></span></div><div class="step-t">6:00</div><div class="step-e">Specials window</div></div>
+      <div class="step animate-up delay-4"><div class="step-top"><span class="step-dot"></span><span class="step-line"></span></div><div class="step-t">6:45</div><div class="step-e">Giveaway reveal</div></div>
+      <div class="step animate-up delay-5"><div class="step-top"><span class="step-dot"></span><span class="step-line"></span></div><div class="step-t">7:00</div><div class="step-e">Doors close</div></div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="map-section" id="location">
+    <iframe class="map-iframe"
+      src="https://www.google.com/maps?q=4801+Dorsey+Hall+Dr+%23204,+Ellicott+City,+MD+21042&output=embed"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Skin Therapeutics location map"
+      allowfullscreen></iframe>
+    <div class="map-card animate-left">
+      <div class="map-eb">FIND US</div>
+      <h2 class="map-h">Crossroads Professional Center.</h2>
+      <div class="map-ad">
+        <span>4801 Dorsey Hall Dr #204</span>
+        <span>Ellicott City, MD 21042</span>
+        <span>(410) 715-1707</span>
+      </div>
+      <a class="map-dir" href="https://maps.app.goo.gl/FoC3bw2Vo5kM3rYV7" target="_blank" rel="noopener">Open in maps</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-left">
+        <img class="footer-logo" src="images/Logo transparent.png" alt="Skin Therapeutics" />
+        <div class="footer-tag">Quiet luxury for skin you live in.</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">VISIT US</div>
+        <div class="footer-col-val">4801 Dorsey Hall Dr #204</div>
+        <div class="footer-col-val">Ellicott City, MD 21042</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">CONTACT</div>
+        <a class="footer-col-val footer-link" href="tel:+14107151707">(410) 715-1707</a>
+        <a class="footer-col-val footer-link" href="mailto:info@skintherapeutics.com">info@skintherapeutics.com</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">HOURS</div>
+        <div class="footer-col-val">Mon to Thu &nbsp; 9 to 5</div>
+        <div class="footer-col-val">Friday &nbsp; 9 to 4</div>
+        <div class="footer-col-val">Saturday &nbsp; 9 to 3</div>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bot">
+      <div class="footer-copy">© 2026 Skin Therapeutics Med Spa</div>
+      <div class="footer-social">
+        <a class="social-link" href="https://www.facebook.com/skintherapeuticsmedspa/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+        </a>
+        <a class="social-link" href="https://www.instagram.com/skintherapeuticsmedspa/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153.509.5.902 1.105 1.153 1.772.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772c-.5.509-1.105.902-1.772 1.153-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+        </a>
+        <a class="social-link" href="https://www.pinterest.com/SkinTherapeuticsMedSpa/" target="_blank" rel="noopener" aria-label="Pinterest">
+          <svg viewBox="0 0 24 24"><path d="M12.04 2C6.5 2 2 6.5 2 12.04c0 4.24 2.64 7.86 6.36 9.32-.09-.79-.17-2 .04-2.87.19-.78 1.22-4.94 1.22-4.94s-.31-.62-.31-1.54c0-1.44.84-2.52 1.88-2.52.89 0 1.32.67 1.32 1.47 0 .9-.57 2.24-.87 3.48-.25 1.04.52 1.89 1.55 1.89 1.86 0 3.29-1.96 3.29-4.79 0-2.51-1.8-4.26-4.37-4.26-2.98 0-4.73 2.23-4.73 4.54 0 .9.35 1.86.78 2.39.09.1.1.19.07.29-.08.32-.26 1.04-.29 1.18-.05.19-.15.23-.35.14-1.28-.6-2.08-2.47-2.08-3.97 0-3.23 2.35-6.21 6.78-6.21 3.56 0 6.32 2.53 6.32 5.92 0 3.54-2.23 6.39-5.32 6.39-1.04 0-2.02-.54-2.36-1.18 0 0-.51 1.97-.64 2.45-.23.89-.86 2.01-1.27 2.69.96.3 1.97.46 3.04.46 5.55 0 10.04-4.5 10.04-10.04C22.07 6.5 17.58 2 12.04 2z"/></svg>
+        </a>
+        <a class="social-link" href="https://www.youtube.com/@skintherapeutics" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- STICKY BOOK -->
+<a class="sticky-book" id="stickyBook" href="#rsvp">BOOK A CONSULTATION</a>
+
+<script>
+  // ============ Scroll Reveal (ANU motion: .in-view toggle) ============
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.animate-up, .animate-down, .animate-left, .animate-right').forEach(el => io.observe(el));
+
+  // ============ Header scrolled state ============
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+    document.getElementById('stickyBook').classList.toggle('show', window.scrollY > 600);
+  });
+
+  // ============ Mobile nav ============
+  document.getElementById('navToggle').addEventListener('click', () => {
+    document.getElementById('nav').classList.toggle('open');
+  });
+  document.querySelectorAll('#nav a').forEach(a => a.addEventListener('click', () => {
+    document.getElementById('nav').classList.remove('open');
+  }));
+
+  // ============ Interest chips toggle ============
+  document.querySelectorAll('.interest-chip').forEach(c => {
+    c.addEventListener('click', () => c.classList.toggle('active'));
+  });
+
+
+  // ============ Smooth anchor scroll offset for sticky header ============
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const id = this.getAttribute('href');
+      if (id.length > 1 && document.querySelector(id)) {
+        e.preventDefault();
+        const target = document.querySelector(id);
+        const offset = window.innerWidth > 960 ? 96 : 72;
+        window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+      }
+    });
+  });
+
+  function openSuccess() {
+    alert('Thanks! Your RSVP is in. We will confirm by email.');
+  }
+
+  // ============ Cinematic Hero (GSAP timeline) ============
+  function initHeroFilm() {
+    if (!window.gsap) { setTimeout(initHeroFilm, 50); return; }
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const hero = document.querySelector('.hero');
+    const heroIntro = document.getElementById('heroIntro');
+    const heroTitle = document.getElementById('heroTitle');
+    const heroDateLine = document.getElementById('heroDateLine');
+    const heroCtaWrap = document.getElementById('heroCtaWrap');
+    const heroBase = document.getElementById('heroBase');
+    const cards = gsap.utils.toArray('.mediaCard');
+
+    if (prefersReduced) {
+      gsap.set(heroIntro, { opacity: 0.3 });
+      gsap.set(heroTitle, { opacity: 1 });
+      gsap.set('.titleChunk', { opacity: 1, y: 0, filter: 'blur(0)' });
+      gsap.set(heroDateLine, { opacity: 1, y: 0, filter: 'blur(0)' });
+      gsap.set(cards, { opacity: 1, y: 0, scale: 1, filter: 'blur(0)' });
+      gsap.set('.card-3', { xPercent: -50 });
+      gsap.set(heroBase, { opacity: 0.55, scale: 1.05 });
+      gsap.set(heroCtaWrap, { opacity: 1, y: 0 });
+      return;
+    }
+
+    gsap.set(hero, { scale: 0.985 });
+    gsap.set('.titleChunk', { yPercent: 70, opacity: 0, filter: 'blur(1rem)' });
+    gsap.set(heroDateLine, { opacity: 0, y: 24, filter: 'blur(.6rem)' });
+    gsap.set(cards, { y: 160, scale: 0.72, filter: 'blur(.7rem)' });
+    gsap.set('.card-3', { xPercent: -50 });
+    gsap.set(heroBase, { opacity: 0, scale: 1.2 });
+    gsap.set(heroCtaWrap, { opacity: 0, y: 30 });
+
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.to(hero, { scale: 1, duration: 1.4, ease: 'power2.out' }, 0)
+      .to(heroBase, { opacity: 0.55, scale: 1.05, duration: 2.4, ease: 'power2.out' }, 0)
+      .to(heroIntro, { opacity: 1, y: -8, scale: 1, duration: 1.1 }, 0.25)
+      .to(heroIntro, { opacity: 0.3, scale: 1.12, duration: 1.4, ease: 'power2.inOut' }, 1.3)
+      .to(heroTitle, { opacity: 1, duration: 0.1 }, 1.15)
+      .to('.titleChunk', { yPercent: 0, opacity: 1, filter: 'blur(0rem)', duration: 0.85, stagger: 0.07, ease: 'back.out(1.35)' }, 1.18)
+      .to(heroDateLine, { opacity: 1, y: 0, filter: 'blur(0rem)', duration: 0.9, ease: 'power3.out' }, 2.0)
+      .to(cards, { opacity: 1, y: 0, scale: 1, filter: 'blur(0rem)', duration: 0.9, stagger: { each: 0.08, from: 'center' }, ease: 'back.out(1.5)' }, 3.1)
+      .to(cards, {
+        x: (i) => [-38, -18, 0, 18, 38][i] || 0,
+        y: (i) => [6, -12, 10, -8, 8][i] || 0,
+        rotation: (i) => [-8, 4, -2, 3, 8][i] || 0,
+        duration: 2.4, ease: 'sine.inOut'
+      }, 4.1)
+      .to(heroCtaWrap, { opacity: 1, y: 0, duration: 0.9, ease: 'back.out(1.6)' }, 4.3);
+  }
+  initHeroFilm();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</body>
+</html>
